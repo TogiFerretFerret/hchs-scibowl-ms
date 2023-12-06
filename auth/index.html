@@ -4,6 +4,8 @@
     
   </head>
   <body>
+        <button id="sin">Sign In</button>
+    <button id="sou">Sign Out</button>
   <script src="./fbdt.js"></script>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -12,6 +14,7 @@
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const auth = getAuth(app);
+    
     async function signIn() {
       var email = prompt("Email");
       var password = prompt("Password");
@@ -40,8 +43,9 @@
         console.log(error);
     });
     }
+    document.getElementById("sin").addEventListener("click", signIn);
+    document.getElementById("sou").addEventListener("click", signOut);
   </script>
-    <button onclick="signIn();">Sign In</button>
-    <button onclick="signOut();">Sign Out</button>
+
   </body>
 </html>
