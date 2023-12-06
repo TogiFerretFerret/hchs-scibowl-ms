@@ -24,7 +24,7 @@
         const user = userCredential.user;
         console.log(user);
         console.log("Yayz");
-        // location.redirect("/auth/dash");
+        location.redirect("/auth/dash");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -35,8 +35,8 @@
     }
     async function signOut() {
       signOut(auth).then(() => {
-        alert("Successful Signout");
-      // Sign-out successful.
+        console.log("Successful Signout");
+        location.redirect("/");
     }).catch((error) => {
       // An error happened.
         alert("error");
