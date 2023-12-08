@@ -24,7 +24,7 @@
         const user = userCredential.user;
         console.log(user);
         console.log("Yayz");
-        location.redirect("/auth/dash");
+        // location.redirect("/auth/dash");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -37,12 +37,24 @@
       const nauth = getAuth(app);
       signOut(nauth).then(() => {
         console.log("Successful Signout");
-        location.replace("/auth/dash");
+        console.log(
+        // location.replace("/auth/dash");
     }).catch((error) => {
         console.log("error");
         console.log(error);
     });
     }
+    onAuthStateChanged(auth, user => {
+    if (user) {
+      // User is signed in.
+      console.log(user);
+      console.log("y");
+    } else {
+      // No user is signed in.
+      alert("Not Logged In!");
+      location.replace("/");
+    }
+    })
     document.getElementById("sin").addEventListener("click", signIn);
     document.getElementById("sou").addEventListener("click", signOut);
   </script>
