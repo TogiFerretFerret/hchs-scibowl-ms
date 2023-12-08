@@ -37,7 +37,7 @@
       const nauth = getAuth(app);
       signOut(nauth).then(() => {
         console.log("Successful Signout");
-        console.log(
+        console.log(nauth);
         // location.replace("/auth/dash");
     }).catch((error) => {
         console.log("error");
