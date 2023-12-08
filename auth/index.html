@@ -34,7 +34,8 @@
       });
     }
     async function signOut() {
-      signOut(auth).then(() => {
+      const nauth = getAuth(app);
+      signOut(nauth).then(() => {
         console.log("Successful Signout");
         location.replace("/auth/dash");
     }).catch((error) => {
