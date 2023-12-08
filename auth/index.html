@@ -33,7 +33,7 @@
         console.log(errorMessage);
       });
     }
-    async function signOut() {
+    async function signOutAcc() {
       const nauth = getAuth(app);
       signOut(nauth).then(() => {
         console.log("Successful Signout");
@@ -45,7 +45,7 @@
       });
     }
     document.getElementById("sin").addEventListener("click", signIn);
-    document.getElementById("sou").addEventListener("click", signOut);
+    document.getElementById("sou").addEventListener("click", signOutAcc);
   </script>
 
   </body>
