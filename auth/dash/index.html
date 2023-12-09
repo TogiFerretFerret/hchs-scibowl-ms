@@ -1,4 +1,45 @@
 <!doctype html>
+<html>
+  <head>
+    <title>Dashboard | MS SciBowl A-Team</title>
+    <link rel="icon" href="../../images/sblg.jpg">
+  </head>
+  <body>
+    <script src="../fbdt.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+    onAuthStateChanged(auth, user => {
+    if (user) {
+      // User is signed in.
+      console.log(user);
+      console.log("y");
+    } else {
+      // No user is signed in.
+      alert("Not Logged In!");
+      location.replace("/");
+    }
+    })
+    async function signOutAcc() {
+      const nauth = getAuth(app);
+      signOut(nauth).then(() => {
+        console.log("Successful Signout");
+        console.log(nauth);
+        location.replace("/auth");
+      }).catch((error) => {
+          console.log("error");
+          console.log(error);
+      });
+    }
+  </script>
+  </body>
+</html>
+
+<!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head><script src="../assets/js/color-modes.js"></script>
 
