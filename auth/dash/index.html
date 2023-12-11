@@ -199,7 +199,7 @@
 </svg>
 
 <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Company name</a>
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="/">MS SciBowl A-Team</a>
 
   <ul class="navbar-nav flex-row d-md-none">
     <li class="nav-item text-nowrap">
@@ -310,7 +310,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="javascript:void();" onclick="signOutAcc();">
+              <a class="nav-link d-flex align-items-center gap-2" href="javascript:void();" id="sacc">
                 <svg class="bi"><use xlink:href="#door-closed"/></svg>
                 Sign out
               </a>
@@ -485,7 +485,7 @@
     } else {
       // No user is signed in.
       alert("Not Logged In!");
-      location.replace("/");
+      location.replace("/auth");
     }
     })
     async function signOutAcc() {
@@ -493,12 +493,15 @@
       signOut(nauth).then(() => {
         console.log("Successful Signout");
         console.log(nauth);
-        location.replace("/auth");
+        location.replace("/");
       }).catch((error) => {
           console.log("error");
           console.log(error);
+          alert("ERROR");
+          alert(error);
       });
     }
+    document.getElementById("sacc").addEventListener("click", signOutAcc);
   </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script><script src="./dashboard.js"></script></body>
 </html>
