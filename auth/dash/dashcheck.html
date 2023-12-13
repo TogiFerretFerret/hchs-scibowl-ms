@@ -1,1 +1,46 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head><script src="../../assets/js/color-modes.js"></script>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Redirecting to Dashboard | MS SciBowl A-Team</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+</div>
+<script src="../../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../fbdt.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+    onAuthStateChanged(auth, user => {
+    if (user) {
+      // User is signed in.
+      console.log(user);
+      console.log("y");
+    } else {
+      // No user is signed in.
+      alert("Not Logged In!/Just Signed Out!");
+      location.replace("/auth");
+    }
+    })
+    async function signOutAcc() {
+      const nauth = getAuth(app);
+      signOut(nauth).then(() => {
+        console.log("Successful Signout");
+        console.log(nauth);
+        location.replace("/");
+      }).catch((error) => {
+          console.log("error");
+          console.log(error);
+          alert("ERROR");
+          alert(error);
+      });
+    }
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script><script src="./dashboard.js"></script></body>
+</html>
